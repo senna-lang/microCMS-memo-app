@@ -1,4 +1,4 @@
-type TextContent = {
+export type TextContent = {
   id: number;
   title: string;
   body: string;
