@@ -1,5 +1,6 @@
 import React from 'react';
 import TextList from './TextList';
+import EditButton from './SidebarEditButton';
 
 const SideBar = () => {
   return (
@@ -9,6 +10,9 @@ const SideBar = () => {
         <div className=" text-4xl font-extrabold text-blue-600"></div>
       </div>
       <TextList />
+      <div className="w-full p-2">
+        <EditButton />
+      </div>
     </div>
   );
 };
