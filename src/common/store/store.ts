@@ -2,23 +2,36 @@ import { create } from 'zustand';
 
 type State = {
   textId: number;
+  title: string;
+  content: string;
   sidebarEdit: boolean;
-  mainAreaEdit: boolean;
+  titleEdit: boolean;
+  contentEdit: boolean;
 };
 
 type Action = {
   updateTextId: (textId: State['textId']) => void;
+  updateTitle: (title: State['title']) => void;
+  updateContent: (content: State['content']) => void;
   toggleSidebarEdit: (sidebarEdit: State['sidebarEdit']) => void;
-  toggleMainAreaEdit: (mainAreaEdit: State['mainAreaEdit']) => void;
+  toggleTitleEdit: (titleEdit: State['titleEdit']) => void;
+  toggleContentEdit: (contentEdit: State['contentEdit']) => void;
 };
 
 export const useStore = create<Action & State>(set => ({
   textId: 1,
+  title: '',
+  content: '',
   sidebarEdit: false,
-  mainAreaEdit: false,
+  titleEdit: false,
+  contentEdit: false,
   updateTextId: newTextId => set(() => ({ textId: newTextId })),
+  updateTitle: newTitle => set(() => ({ title: newTitle })),
+  updateContent: newContent => set(() => ({ content: newContent })),
   toggleSidebarEdit: toggleSidebarEdit =>
     set(() => ({ sidebarEdit: toggleSidebarEdit })),
-  toggleMainAreaEdit: toggleMainAreaEditEdit =>
-    set(() => ({ mainAreaEdit: toggleMainAreaEditEdit })),
+  toggleTitleEdit: toggleTitleEdit =>
+    set(() => ({ titleEdit: toggleTitleEdit })),
+  toggleContentEdit: toggleContentEdit =>
+    set(() => ({ contentEdit: toggleContentEdit })),
 }));
