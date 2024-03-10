@@ -10,7 +10,7 @@ const TextList = () => {
     <div className="flex-grow overflow-y-auto">
       {textList ? (
         textList.map((text: TextContent) => (
-          <TitleCard textId={text.id} textTitle={text.title} />
+          <TitleCard textId={text.id} textTitle={text.title} key={text.id} />
         ))
       ) : (
         <></>
