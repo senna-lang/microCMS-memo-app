@@ -6,12 +6,12 @@ import { TextContent } from '../types/types';
 
 const url = 'http://localhost:3000/content';
 
-const fetcher:Fetcher<TextContent> = async (url: string) => {
+const fetcher: Fetcher<TextContent> = async (url: string) => {
   const response = await axios.get(url);
   return response.data;
 };
 
-export const useTextDetail = (textId: number) => {
+export const useTextDetail = (textId: number | null) => {
   const {
     data: textDetail,
     isLoading,

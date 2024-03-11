@@ -5,21 +5,19 @@ import AddIcon from '../../public/icons/+.svg';
 import CheckIcon from '../../public/icons/done.svg';
 import axios from 'axios';
 import { useTextDetail } from '@/common/hooks/useTextDetail';
-import { useTextList } from '@/common/hooks/useTextList';
 
 const ContentEditButton = () => {
   const { contentEdit, toggleContentEdit, textId, content } = useStore();
   const { detailTrigger } = useTextDetail(textId);
-  const { listTrigger } = useTextList();
   const data = {
     body: content,
   };
-  const handleAppDate = async (id: number) => {
+  const handleAppDate = async (id: number | null) => {
     await axios.put(`http://localhost:3000/content/${id}`, data);
     toggleContentEdit(false);
     detailTrigger();
-    listTrigger();
   };
+  const handleEdit = () => {};
 
   return (
     <div>

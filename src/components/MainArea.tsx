@@ -9,8 +9,14 @@ const MainArea = () => {
   const { textDetail } = useTextDetail(textId);
   return (
     <div className="flex h-screen flex-col bg-slate-100 p-6">
-      <TextTitle textTitle={textDetail.title} />
-      <TextContent textContent={textDetail.body} />
+      {textDetail ? (
+        <>
+          <TextTitle textTitle={textDetail.title} />
+          <TextContent textContent={textDetail.body} />
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
