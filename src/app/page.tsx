@@ -1,6 +1,6 @@
 'use client';
-import MainArea from '@/components/MainArea';
-import SideBar from '@/components/SideBar';
+import MainArea from '@/components/layouts/MainArea';
+import SideBar from '@/components/layouts/SideBar';
 
 const Home = () => {
   return (
