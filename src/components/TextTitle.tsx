@@ -1,7 +1,6 @@
 'use client';
 
 import { useStore } from '@/common/store/store';
-import TitleEditButton from './TitleEditButton';
 
 const TextTitle = ({ textTitle }: { textTitle: string }) => {
   const { titleEdit, updateTitle } = useStore();
@@ -17,7 +16,6 @@ const TextTitle = ({ textTitle }: { textTitle: string }) => {
       ) : (
         <h1 className="text-2xl font-bold ">{textTitle}</h1>
       )}
-      <TitleEditButton />
     </div>
   );
 };
