@@ -1,12 +1,12 @@
-'use client';
-import { Button } from '../ui/button';
-import { useStore } from '@/common/store/store';
-import SaveIcon from '../../../public/icons/save.svg';
-import CancelIcon from '../../../public/icons/cancel.svg';
-import EditIcon from '../../../public//icons/edit.svg';
-import { instance } from '@/lib/axiosClient';
-import { useTextDetail } from '@/common/hooks/useTextDetail';
-import { useTextList } from '@/common/hooks/useTextList';
+"use client";
+import { Button } from "../ui/button";
+import { useStore } from "@/common/store/store";
+import SaveIcon from "../../../public/icons/save.svg";
+import CancelIcon from "../../../public/icons/cancel.svg";
+import EditIcon from "../../../public//icons/edit.svg";
+import { instance } from "@/lib/axiosClient";
+import { useTextDetail } from "@/common/hooks/useTextDetail";
+import { useTextList } from "@/common/hooks/useTextList";
 
 const TitleEditButton = () => {
   const { titleEdit, toggleTitleEdit, textId, title } = useStore();
@@ -29,7 +29,7 @@ const TitleEditButton = () => {
   return (
     <div>
       {titleEdit ? (
-        <div className=" w-full flex justify-between">
+        <div className=" flex w-full justify-between">
           <Button
             variant="outline"
             color="blue"
@@ -38,7 +38,7 @@ const TitleEditButton = () => {
           >
             <div className=" flex flex-col items-center">
               <SaveIcon />
-              <span className=" text-white text-xs">Save</span>
+              <span className=" text-xs text-white">Save</span>
             </div>
           </Button>
 
@@ -49,7 +49,7 @@ const TitleEditButton = () => {
           >
             <div className=" flex flex-col items-center">
               <CancelIcon />
-              <span className=" text-white text-xs">Cancel</span>
+              <span className=" text-xs text-white">Cancel</span>
             </div>
           </Button>
         </div>

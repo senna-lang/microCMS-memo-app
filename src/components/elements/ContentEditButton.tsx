@@ -1,11 +1,11 @@
-'use client';
-import { Button } from '../ui/button';
-import { useStore } from '@/common/store/store';
-import SaveIcon from '../../../public/icons/save.svg';
-import CancelIcon from '../../../public/icons/cancel.svg';
-import EditIcon from '../../../public/icons/edit.svg';
-import { instance } from '@/lib/axiosClient';
-import { useTextDetail } from '@/common/hooks/useTextDetail';
+"use client";
+import { Button } from "../ui/button";
+import { useStore } from "@/common/store/store";
+import SaveIcon from "../../../public/icons/save.svg";
+import CancelIcon from "../../../public/icons/cancel.svg";
+import EditIcon from "../../../public/icons/edit.svg";
+import { instance } from "@/lib/axiosClient";
+import { useTextDetail } from "@/common/hooks/useTextDetail";
 
 const ContentEditButton = () => {
   const { contentEdit, toggleContentEdit, textId, content } = useStore();
@@ -26,7 +26,7 @@ const ContentEditButton = () => {
   return (
     <div>
       {contentEdit ? (
-        <div className=" w-full flex justify-between">
+        <div className=" flex w-full justify-between">
           <Button
             variant="outline"
             className=" bg-blue-400"
@@ -34,7 +34,7 @@ const ContentEditButton = () => {
           >
             <div className=" flex flex-col items-center">
               <SaveIcon />
-              <span className=" text-white text-xs">Save</span>
+              <span className=" text-xs text-white">Save</span>
             </div>
           </Button>
           <Button
@@ -44,7 +44,7 @@ const ContentEditButton = () => {
           >
             <div className="flex flex-col items-center">
               <CancelIcon />
-              <span className=" text-white text-xs">Cancel</span>
+              <span className=" text-xs text-white">Cancel</span>
             </div>
           </Button>
         </div>

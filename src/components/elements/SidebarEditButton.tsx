@@ -1,22 +1,22 @@
-'use client';
-import { Button } from '../ui/button';
-import { useStore } from '@/common/store/store';
-import AddIcon from '../../../public/icons/+.svg';
-import CheckIcon from '../../../public/icons/done.svg';
-import EditIcon from '../../../public//icons/edit.svg';
-import { instance } from '@/lib/axiosClient';
-import { useTextList } from '@/common/hooks/useTextList';
+"use client";
+import { Button } from "../ui/button";
+import { useStore } from "@/common/store/store";
+import AddIcon from "../../../public/icons/+.svg";
+import CheckIcon from "../../../public/icons/done.svg";
+import EditIcon from "../../../public//icons/edit.svg";
+import { instance } from "@/lib/axiosClient";
+import { useTextList } from "@/common/hooks/useTextList";
 
 const EditButton = () => {
   const { sidebarEdit, toggleSidebarEdit } = useStore();
   const { listTrigger } = useTextList();
   const data = {
-    title: 'タイトル',
-    body: 'コンテンツ',
+    title: "タイトル",
+    body: "コンテンツ",
   };
   const createText = async () => {
     try {
-      await instance.post('/content', data);
+      await instance.post("/content", data);
       listTrigger();
     } catch (err) {
       console.log(err);
@@ -25,7 +25,7 @@ const EditButton = () => {
   return (
     <div>
       {sidebarEdit ? (
-        <div className=" w-full flex justify-between">
+        <div className=" flex w-full justify-between">
           <Button
             className=" border-blue-400"
             size="lg"
@@ -50,7 +50,7 @@ const EditButton = () => {
           </Button>
         </div>
       ) : (
-        <div className=" w-full flex justify-end">
+        <div className=" flex w-full justify-end">
           <Button
             variant="outline"
             className=" bg-blue-400"
