@@ -11,7 +11,6 @@ const SideBar = () => {
           <ServiceIcon />
           <h1>ServiceName</h1>
         </div>
-        <div className=" text-4xl font-extrabold text-blue-600"></div>
       </div>
       <TextList />
       <div className="w-full p-2">

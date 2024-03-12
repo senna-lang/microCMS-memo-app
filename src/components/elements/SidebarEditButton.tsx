@@ -20,6 +20,7 @@ const EditButton = () => {
       listTrigger();
     } catch (err) {
       console.log(err);
+      window.alert("テキストの作成に失敗しました。しばらくしてからもう１度お試しください。");
     }
   };
   return (

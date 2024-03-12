@@ -21,20 +21,27 @@ const TitleCard = ({
     contentEdit,
     titleEdit,
   } = useStore();
-  const { detailTrigger, textDetail } = useTextDetail(textId);
-  const { listTrigger } = useTextList();
   const style = sidebarEdit
     ? "b-2 flex items-center border-b border-black p-4 font-semibold text-slate-500 duration-150 "
     : "b-2 flex cursor-pointer items-center border-b border-black p-4 font-semibold text-slate-500 duration-150 hover:rounded-md hover:border-white hover:bg-slate-300 hover:text-blue-500 ";
+  const { detailTrigger, textDetail } = useTextDetail(textId);
+  const { listTrigger } = useTextList();
 
   const selectText = (id: number) => {
     if (contentEdit || titleEdit || sidebarEdit) {
       return;
     }
-    updateTextId(id);
-    updateContent(textDetail.body);
-    updateTitle(textDetail.title);
-    detailTrigger();
+    try {
+      updateTextId(id);
+      updateContent(textDetail.body);
+      updateTitle(textDetail.title);
+      detailTrigger();
+    } catch (err) {
+      window.alert(
+        "テキストデータの取得に失敗しました。しばらくしてからもう１度お試しください。",
+      );
+      console.error(err);
+    }
   };
 
   const deleteText = async (id: number) => {
@@ -44,6 +51,9 @@ const TitleCard = ({
       listTrigger();
     } catch (err) {
       console.error(err);
+      window.alert(
+        "テキストの削除に失敗しました。しばらくしてからもう１度お試しください。",
+      );
     }
   };
 

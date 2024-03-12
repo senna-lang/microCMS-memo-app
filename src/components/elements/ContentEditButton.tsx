@@ -20,6 +20,7 @@ const ContentEditButton = () => {
       detailTrigger();
     } catch (err) {
       console.error(err);
+      window.alert("テキストの更新に失敗しました。しばらくしてからもう１度お試しください。");
     }
   };
 

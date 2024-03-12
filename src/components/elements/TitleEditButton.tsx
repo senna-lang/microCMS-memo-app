@@ -23,6 +23,7 @@ const TitleEditButton = () => {
       listTrigger();
     } catch (err) {
       console.error(err);
+      window.alert("タイトルの更新に失敗しました。しばらくしてからもう１度お試しください。");
     }
   };
 
