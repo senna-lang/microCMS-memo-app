@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useStore } from '@/common/store/store';
+import { useStore } from "@/common/store/store";
 
 const TextTitle = ({ textTitle }: { textTitle: string }) => {
   const { titleEdit, updateTitle } = useStore();
@@ -11,7 +11,7 @@ const TextTitle = ({ textTitle }: { textTitle: string }) => {
           type="text"
           className="text-2xl font-bold "
           defaultValue={textTitle}
-          onChange={e => updateTitle(e.target.value)}
+          onChange={(e) => updateTitle(e.target.value)}
         />
       ) : (
         <h1 className="text-2xl font-bold ">{textTitle}</h1>

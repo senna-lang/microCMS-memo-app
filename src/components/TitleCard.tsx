@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useStore } from '@/common/store/store';
-import { useTextDetail } from '@/common/hooks/useTextDetail';
-import DeleteIcon from '../../public/icons/delete.svg';
-import axios from 'axios';
-import { useTextList } from '@/common/hooks/useTextList';
+import { useStore } from "@/common/store/store";
+import { useTextDetail } from "@/common/hooks/useTextDetail";
+import DeleteIcon from "../../public/icons/delete.svg";
+import axios from "axios";
+import { useTextList } from "@/common/hooks/useTextList";
 
 const TitleCard = ({
   textId,
@@ -24,8 +24,8 @@ const TitleCard = ({
   const { detailTrigger, textDetail } = useTextDetail(textId);
   const { listTrigger } = useTextList();
   const style = sidebarEdit
-    ? 'b-2 flex items-center border-b border-black p-4 font-semibold text-slate-500 duration-150 '
-    : 'b-2 flex cursor-pointer items-center border-b border-black p-4 font-semibold text-slate-500 duration-150 hover:rounded-md hover:border-white hover:bg-slate-300 hover:text-blue-500 ';
+    ? "b-2 flex items-center border-b border-black p-4 font-semibold text-slate-500 duration-150 "
+    : "b-2 flex cursor-pointer items-center border-b border-black p-4 font-semibold text-slate-500 duration-150 hover:rounded-md hover:border-white hover:bg-slate-300 hover:text-blue-500 ";
 
   const selectText = (id: number) => {
     if (contentEdit || titleEdit || sidebarEdit) {
@@ -40,6 +40,7 @@ const TitleCard = ({
   const deleteText = async (id: number) => {
     try {
       await axios.delete(`http://localhost:3000/content/${id}`);
+      updateTextId(null);
       listTrigger();
     } catch (err) {
       console.error(err);
@@ -49,7 +50,7 @@ const TitleCard = ({
   return (
     <ul>
       <li key={textId} className={style} onClick={() => selectText(textId)}>
-        <div className="w-full flex justify-between">
+        <div className="flex w-full justify-between">
           <span className=" inline-block">{textTitle}</span>
           {sidebarEdit ? (
             <button
