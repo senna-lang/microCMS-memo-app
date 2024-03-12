@@ -1,16 +1,4 @@
-# プロジェクト名
-
-[![ライセンス](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-
-## 概要
-
-このプロジェクトは何をするもので、どのような目的を持っていますか。
-
-## 特徴
-
-- 特徴1：特徴1の説明
-- 特徴2：特徴2の説明
-- ...
+# NCDC-Recruite-App
 
 ## インストール
 
