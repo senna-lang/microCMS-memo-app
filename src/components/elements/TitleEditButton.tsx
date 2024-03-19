@@ -4,26 +4,28 @@ import { useStore } from "@/common/store/store";
 import SaveIcon from "../../../public/icons/save.svg";
 import CancelIcon from "../../../public/icons/cancel.svg";
 import EditIcon from "../../../public//icons/edit.svg";
-import { instance } from "@/lib/axiosClient";
 import { useTextDetail } from "@/common/hooks/useTextDetail";
 import { useTextList } from "@/common/hooks/useTextList";
 
 const TitleEditButton = () => {
   const { titleEdit, toggleTitleEdit, textId, title } = useStore();
   const { detailTrigger } = useTextDetail(textId);
-  const { listTrigger } = useTextList();
+  const { mutate } = useTextList();
+
+
   const data = {
     title,
   };
-  const handleAppDate = async (id: number | null) => {
+  const handleAppDate = async () => {
     try {
-      await instance.put(`/content/${id}`, data);
+      await detailTrigger(data);
+      mutate()
       toggleTitleEdit(false);
-      detailTrigger();
-      listTrigger();
     } catch (err) {
       console.error(err);
-      window.alert("タイトルの更新に失敗しました。しばらくしてからもう１度お試しください。");
+      window.alert(
+        "タイトルの更新に失敗しました。しばらくしてからもう１度お試しください。",
+      );
     }
   };
 
@@ -35,7 +37,7 @@ const TitleEditButton = () => {
             variant="outline"
             color="blue"
             className=" bg-blue-400"
-            onClick={() => handleAppDate(textId)}
+            onClick={() => handleAppDate()}
           >
             <div className=" flex flex-col items-center">
               <SaveIcon />

@@ -24,8 +24,8 @@ const TitleCard = ({
   const style = sidebarEdit
     ? "b-2 flex items-center border-b border-black p-4 font-semibold text-slate-500 duration-150 "
     : "b-2 flex cursor-pointer items-center border-b border-black p-4 font-semibold text-slate-500 duration-150 hover:rounded-md hover:border-white hover:bg-slate-300 hover:text-blue-500 ";
-  const { detailTrigger, textDetail } = useTextDetail(textId);
-  const { listTrigger } = useTextList();
+  const { textDetail } = useTextDetail(textId);
+  const { mutate } = useTextList();
 
   const selectText = (id: number) => {
     if (contentEdit || titleEdit || sidebarEdit) {
@@ -35,7 +35,6 @@ const TitleCard = ({
       updateTextId(id);
       updateContent(textDetail.body);
       updateTitle(textDetail.title);
-      detailTrigger();
     } catch (err) {
       window.alert(
         "テキストデータの取得に失敗しました。しばらくしてからもう１度お試しください。",
@@ -48,7 +47,7 @@ const TitleCard = ({
     try {
       await axios.delete(`http://localhost:3000/content/${id}`);
       updateTextId(null);
-      listTrigger();
+      mutate();
     } catch (err) {
       console.error(err);
       window.alert(

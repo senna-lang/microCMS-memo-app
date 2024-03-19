@@ -14,10 +14,9 @@ const EditButton = () => {
     title: "タイトル",
     body: "コンテンツ",
   };
-  const createText = async () => {
+  const createText = () => {
     try {
-      await instance.post("/content", data);
-      listTrigger();
+      listTrigger(data);
     } catch (err) {
       console.log(err);
       window.alert("テキストの作成に失敗しました。しばらくしてからもう１度お試しください。");

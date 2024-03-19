@@ -4,7 +4,6 @@ import { useStore } from "@/common/store/store";
 import SaveIcon from "../../../public/icons/save.svg";
 import CancelIcon from "../../../public/icons/cancel.svg";
 import EditIcon from "../../../public/icons/edit.svg";
-import { instance } from "@/lib/axiosClient";
 import { useTextDetail } from "@/common/hooks/useTextDetail";
 
 const ContentEditButton = () => {
@@ -13,11 +12,10 @@ const ContentEditButton = () => {
   const data = {
     body: content,
   };
-  const handleAppDate = async (id: number | null) => {
+  const handleAppDate = () => {
     try {
-      await instance.put(`/content/${id}`, data);
+      detailTrigger(data);
       toggleContentEdit(false);
-      detailTrigger();
     } catch (err) {
       console.error(err);
       window.alert("テキストの更新に失敗しました。しばらくしてからもう１度お試しください。");
@@ -31,7 +29,7 @@ const ContentEditButton = () => {
           <Button
             variant="outline"
             className=" bg-blue-400"
-            onClick={() => handleAppDate(textId)}
+            onClick={() => handleAppDate()}
           >
             <div className=" flex flex-col items-center">
               <SaveIcon />
