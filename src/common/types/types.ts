@@ -1,9 +1,11 @@
-export type TextContent = {
+export type MemoContent = {
   id: number;
   title: string;
-  body: string;
+  content: string;
   createdAt: string;
   updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
 };
 export type PostText = {
   title: string;
