@@ -1,4 +1,3 @@
-"use client";
 import MainArea from "@/components/layouts/MainArea";
 import SideBar from "@/components/layouts/SideBar";
 
@@ -11,7 +10,7 @@ const Home = () => {
             <SideBar />
           </div>
           <div className="max-h-screen w-3/4">
-            <MainArea />
+            {/* <MainArea /> */}
           </div>
         </div>
       </div>
