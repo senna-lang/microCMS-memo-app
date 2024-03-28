@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 type State = {
-  textId: number |null;
+  textId: string;
   title: string;
   content: string;
   sidebarEdit: boolean;
@@ -19,7 +19,7 @@ type Action = {
 };
 
 export const useStore = create<Action & State>(set => ({
-  textId: null,
+  textId: '',
   title: '',
   content: '',
   sidebarEdit: false,
