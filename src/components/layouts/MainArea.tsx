@@ -1,35 +1,36 @@
 "use client";
-import { useTextDetail } from "@/common/hooks/useTextDetail";
+
 import { useStore } from "@/common/store/store";
 import TextTitle from "../TextTitle";
 import TextContent from "../TextContent";
 import ContentEditButton from "../elements/ContentEditButton";
 import TitleEditButton from "../elements/TitleEditButton";
+import { useMemoDetail } from "@/common/hooks/useMemoDetail";
 
 const MainArea = () => {
   const { textId } = useStore();
-  const { textDetail } = useTextDetail(textId);
+  const {memoContent} = useMemoDetail(textId)
   return (
     <div className="flex h-screen flex-col bg-slate-100 p-6">
-      {textDetail ? (
+      {memoContent ? (
         <>
           <div className=" flex w-full justify-between">
             <div className=" w-5/6">
-              <TextTitle textTitle={textDetail.title} />
+              <TextTitle textTitle={memoContent.title} />
             </div>
             <div className=" w-1/6">
               <div className=" flex w-full justify-end">
-                <TitleEditButton />
+                {/* <TitleEditButton /> */}
               </div>
             </div>
           </div>
           <div className=" flex flex-grow justify-between">
             <div className=" w-5/6">
-              <TextContent textContent={textDetail.body} />
+              <TextContent textContent={memoContent.content} />
             </div>
             <div className=" w-1/6">
               <div className=" flex w-full justify-end">
-                <ContentEditButton />
+                {/* <ContentEditButton /> */}
               </div>
             </div>
           </div>
