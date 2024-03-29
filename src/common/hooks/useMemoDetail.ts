@@ -2,7 +2,7 @@ import { instance } from "@/lib/axiosClient";
 import { useQuery } from "@tanstack/react-query";
 
 const fetcher = async (id:string) => {
-  const res = await instance.get(`/api/memoList/${id}`);
+  const res = await instance.get(`/api/memoContent/${id}`);
   return res.data;
 };
 
