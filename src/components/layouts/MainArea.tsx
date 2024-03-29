@@ -9,7 +9,8 @@ import { useMemoDetail } from "@/common/hooks/useMemoDetail";
 
 const MainArea = () => {
   const { textId } = useStore();
-  const {memoContent} = useMemoDetail(textId)
+  const { memoContent } = useMemoDetail(textId);
+
   return (
     <div className="flex h-screen flex-col bg-slate-100 p-6">
       {memoContent ? (
