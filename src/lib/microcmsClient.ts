@@ -9,3 +9,7 @@ export const getAllMemo = async () => {
   const data = await client.get({ endpoint: "memo" });
   return data;
 };
+export const getMemoDetail = async (id: string) => {
+  const data = await client.get({ endpoint: "memo", contentId: `${id}` });
+  return data;
+};
