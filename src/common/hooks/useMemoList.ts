@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 
 const fetcher = async () => {
   const res = await instance.get("/api/memoList");
-  // console.log(res.data)
   return res.data.contents;
 };
 
