@@ -2,7 +2,6 @@
 
 import { useStore } from "@/common/store/store";
 import DeleteIcon from "../../public/icons/delete.svg";
-import axios from "axios";
 import { useMemoDetail } from "@/common/hooks/useMemoDetail";
 
 const TitleCard = ({
