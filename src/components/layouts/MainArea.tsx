@@ -7,6 +7,7 @@ import ContentEditButton from "../elements/ContentEditButton";
 import TitleEditButton from "../elements/TitleEditButton";
 import { useMemoDetail } from "@/common/hooks/useMemoDetail";
 
+
 const MainArea = () => {
   const { textId } = useStore();
   const { memoContent } = useMemoDetail(textId);
