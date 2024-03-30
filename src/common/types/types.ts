@@ -7,9 +7,9 @@ export type MemoContent = {
   publishedAt: string;
   revisedAt: string;
 };
-export type PostText = {
+export type PostMemo = {
   title: string;
-  body: string;
+  content: string;
 };
 export type PostFetcher = <T, U>(
   url: string,
