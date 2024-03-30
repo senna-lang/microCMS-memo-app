@@ -14,7 +14,7 @@ const SideBar = () => {
       </div>
       <TextList />
       <div className="w-full p-2">
-        {/* <EditButton /> */}
+        <EditButton />
       </div>
     </div>
   );
