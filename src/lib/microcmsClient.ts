@@ -1,7 +1,6 @@
 import { PostMemo } from "@/common/types/types";
 import { createClient } from "microcms-js-sdk";
 
-
 export const client = createClient({
   serviceDomain: "fnblt2o36e",
   apiKey: process.env.NEXT_PUBLIC_API_KEY!,
@@ -23,6 +22,13 @@ export const createMemo = async (props: PostMemo) => {
       title,
       content,
     },
+  });
+  return data;
+};
+export const deleteMemo = async (id: string) => {
+  const data = await client.delete({
+    endpoint: "memo",
+    contentId: id,
   });
   return data;
 };
