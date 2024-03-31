@@ -4,6 +4,7 @@ import { PostMemo } from "../types/types";
 
 export const useMemoMutation = () => {
   const queryClient = useQueryClient();
+
   const createMemo = useMutation({
     mutationFn: async (post: PostMemo) =>
       await instance.post("/api/postMemo", post),
@@ -14,7 +15,18 @@ export const useMemoMutation = () => {
     },
   });
 
+  const deleteMemo = useMutation({
+    mutationFn: async (id: string) =>
+      await instance.delete(`/api/deleteMemo/${id}`),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["memoList"],
+      });
+    },
+  });
+
   return {
     createMemo,
+    deleteMemo
   };
 };

@@ -3,6 +3,7 @@
 import { useStore } from "@/common/store/store";
 import DeleteIcon from "../../public/icons/delete.svg";
 import { useMemoDetail } from "@/common/hooks/useMemoDetail";
+import { useMemoMutation } from "@/common/hooks/useMemoMutation";
 
 const TitleCard = ({
   textId,
@@ -23,6 +24,7 @@ const TitleCard = ({
     ? "b-2 flex items-center border-b border-black p-4 font-semibold text-slate-500 duration-150 "
     : "b-2 flex cursor-pointer items-center border-b border-black p-4 font-semibold text-slate-500 duration-150 hover:rounded-md hover:border-white hover:bg-slate-300 hover:text-blue-500 ";
   const { memoContent } = useMemoDetail(textId);
+  const { deleteMemo } = useMemoMutation();
 
   const selectText = (id: string) => {
     if (contentEdit || titleEdit || sidebarEdit) {
@@ -40,18 +42,17 @@ const TitleCard = ({
     }
   };
 
-  // const deleteText = async (id: number) => {
-  //   try {
-  //     await axios.delete(`http://localhost:3000/content/${id}`);
-  //     updateTextId('');
-  //     // mutate();
-  //   } catch (err) {
-  //     console.error(err);
-  //     window.alert(
-  //       "テキストの削除に失敗しました。しばらくしてからもう１度お試しください。",
-  //     );
-  //   }
-  // };
+  const deleteText = async (id: string) => {
+    try {
+      deleteMemo.mutate(id);
+      updateTextId("");
+    } catch (err) {
+      console.error(err);
+      window.alert(
+        "テキストの削除に失敗しました。しばらくしてからもう１度お試しください。",
+      );
+    }
+  };
 
   return (
     <ul>
@@ -61,7 +62,7 @@ const TitleCard = ({
           {sidebarEdit ? (
             <button
               className="mr-2 block cursor-pointer"
-              // onClick={() => deleteText(textId)}
+              onClick={() => deleteText(textId)}
             >
               <DeleteIcon />
             </button>
