@@ -1,4 +1,4 @@
-import { PostMemo } from "@/common/types/types";
+import { PostMemo, UpdateMemo } from "@/common/types/types";
 import { createClient } from "microcms-js-sdk";
 
 export const client = createClient({
@@ -31,4 +31,15 @@ export const deleteMemo = async (id: string) => {
     contentId: id,
   });
   return data;
+};
+export const updateMemo = async (props: UpdateMemo) => {
+  const { id, title, content } = props;
+  const data = await client.update({
+    endpoint: "memo",
+    contentId: id,
+    content: {
+      title,
+      content,
+    },
+  });
 };

@@ -4,22 +4,21 @@ import { useStore } from "@/common/store/store";
 import SaveIcon from "../../../public/icons/save.svg";
 import CancelIcon from "../../../public/icons/cancel.svg";
 import EditIcon from "../../../public//icons/edit.svg";
-import { useTextDetail } from "@/common/hooks/useTextDetail";
-import { useTextList } from "@/common/hooks/useTextList";
+import { updateMemo } from "@/lib/microcmsClient";
+import { useMemoMutation } from "@/common/hooks/useMemoMutation";
 
 const TitleEditButton = () => {
-  const { titleEdit, toggleTitleEdit, textId, title } = useStore();
-  const { detailTrigger } = useTextDetail(textId);
-  const { mutate } = useTextList();
-
+  const { titleEdit, toggleTitleEdit, textId, title, content } = useStore();
+  const { updateMemo } = useMemoMutation();
 
   const data = {
+    id: textId,
     title,
+    content,
   };
   const handleAppDate = async () => {
     try {
-      await detailTrigger(data);
-      mutate()
+      updateMemo.mutate(data);
       toggleTitleEdit(false);
     } catch (err) {
       console.error(err);

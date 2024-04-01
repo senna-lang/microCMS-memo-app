@@ -22,7 +22,7 @@ const MainArea = () => {
             </div>
             <div className=" w-1/6">
               <div className=" flex w-full justify-end">
-                {/* <TitleEditButton /> */}
+                <TitleEditButton />
               </div>
             </div>
           </div>
@@ -32,7 +32,7 @@ const MainArea = () => {
             </div>
             <div className=" w-1/6">
               <div className=" flex w-full justify-end">
-                {/* <ContentEditButton /> */}
+                <ContentEditButton />
               </div>
             </div>
           </div>

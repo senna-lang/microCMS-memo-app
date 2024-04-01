@@ -11,6 +11,12 @@ export type PostMemo = {
   title: string;
   content: string;
 };
+export type UpdateMemo = {
+  id: string;
+  title: string;
+  content: string;
+};
+
 export type PostFetcher = <T, U>(
   url: string,
   arg: {

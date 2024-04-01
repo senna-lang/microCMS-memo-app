@@ -4,21 +4,25 @@ import { useStore } from "@/common/store/store";
 import SaveIcon from "../../../public/icons/save.svg";
 import CancelIcon from "../../../public/icons/cancel.svg";
 import EditIcon from "../../../public/icons/edit.svg";
-import { useTextDetail } from "@/common/hooks/useTextDetail";
+import { useMemoMutation } from "@/common/hooks/useMemoMutation";
 
 const ContentEditButton = () => {
-  const { contentEdit, toggleContentEdit, textId, content } = useStore();
-  const { detailTrigger } = useTextDetail(textId);
+  const { contentEdit, toggleContentEdit, textId, title, content } = useStore();
+  const { updateMemo } = useMemoMutation();
   const data = {
-    body: content,
+    id: textId,
+    title,
+    content,
   };
   const handleAppDate = () => {
     try {
-      detailTrigger(data);
+      updateMemo.mutate(data);
       toggleContentEdit(false);
     } catch (err) {
       console.error(err);
-      window.alert("テキストの更新に失敗しました。しばらくしてからもう１度お試しください。");
+      window.alert(
+        "テキストの更新に失敗しました。しばらくしてからもう１度お試しください。",
+      );
     }
   };
 

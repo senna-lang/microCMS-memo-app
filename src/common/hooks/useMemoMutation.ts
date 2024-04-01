@@ -1,6 +1,6 @@
 import { instance } from "@/lib/axiosClient";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { PostMemo } from "../types/types";
+import { PostMemo, UpdateMemo } from "../types/types";
 
 export const useMemoMutation = () => {
   const queryClient = useQueryClient();
@@ -25,8 +25,25 @@ export const useMemoMutation = () => {
     },
   });
 
+  const updateMemo = useMutation({
+    mutationFn: async (props: UpdateMemo) => {
+      const { id, title, content } = props;
+      const body = {
+        title,
+        content,
+      };
+      await instance.put(`/api/updateMemo/${id}`, body);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["memoContent"],
+      });
+    },
+  });
+
   return {
     createMemo,
-    deleteMemo
+    deleteMemo,
+    updateMemo,
   };
 };
